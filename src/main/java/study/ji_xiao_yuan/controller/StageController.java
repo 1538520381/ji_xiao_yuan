@@ -1,6 +1,5 @@
 package study.ji_xiao_yuan.controller;
 
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -116,5 +115,17 @@ public class StageController {
         }
         update(stage0);
         return update(stage);
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 根据顺序返回阶段列表
+     * @email 1538520381@qq.com
+     * @date 2023/12/7 22:20
+     */
+    @GetMapping
+    public R<List<Stage>> getStageList() {
+        return R.success("阶段列表获取成功", stageService.getStageList());
     }
 }

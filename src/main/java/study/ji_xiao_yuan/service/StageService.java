@@ -3,6 +3,8 @@ package study.ji_xiao_yuan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import study.ji_xiao_yuan.entity.pojo.Stage;
 
+import java.util.List;
+
 /**
  * @author Persolute
  * @version 1.0
@@ -12,4 +14,6 @@ import study.ji_xiao_yuan.entity.pojo.Stage;
  */
 public interface StageService extends IService<Stage> {
     Stage getByOrder(Integer order);
+
+    List<Stage> getStageList();
 }

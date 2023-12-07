@@ -8,6 +8,8 @@ import study.ji_xiao_yuan.dao.StageDao;
 import study.ji_xiao_yuan.entity.pojo.Stage;
 import study.ji_xiao_yuan.service.StageService;
 
+import java.util.List;
+
 /**
  * @author Persolute
  * @version 1.0
@@ -29,5 +31,19 @@ public class StageServiceImpl extends ServiceImpl<StageDao, Stage> implements St
         LambdaQueryWrapper<Stage> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Stage::getOrder, order);
         return this.getOne(lambdaQueryWrapper);
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 根据顺序返回阶段列表
+     * @email 1538520381@qq.com
+     * @date 2023/12/7 22:18
+     */
+    @Override
+    public List<Stage> getStageList() {
+        LambdaQueryWrapper<Stage> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.orderByAsc(Stage::getOrder);
+        return this.list(lambdaQueryWrapper);
     }
 }
