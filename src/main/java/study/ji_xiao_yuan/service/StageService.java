@@ -11,4 +11,5 @@ import study.ji_xiao_yuan.entity.pojo.Stage;
  * @date 2023/12/7 13:18
  */
 public interface StageService extends IService<Stage> {
+    Stage getByOrder(Integer order);
 }
