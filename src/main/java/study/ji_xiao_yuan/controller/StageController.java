@@ -65,4 +65,20 @@ public class StageController {
             return R.error("删除失败");
         }
     }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 修改阶段属性
+     * @email 1538520381@qq.com
+     * @date 2023/12/7 21:01
+     */
+    @PutMapping
+    public R<String> update(@RequestBody Stage stage) {
+        if (stageService.updateById(stage)) {
+            return R.success("修改成功");
+        } else {
+            return R.error("修改失败");
+        }
+    }
 }
