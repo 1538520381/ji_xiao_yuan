@@ -2,6 +2,7 @@ package study.ji_xiao_yuan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import study.ji_xiao_yuan.entity.pojo.User;
+import study.ji_xiao_yuan.entity.result.R;
 
 /**
  * @author Persolute
@@ -11,4 +12,6 @@ import study.ji_xiao_yuan.entity.pojo.User;
  * @date 2023/12/7 13:07
  */
 public interface UserService extends IService<User> {
+    R<String> register(User user);
+    User login(User user);
 }

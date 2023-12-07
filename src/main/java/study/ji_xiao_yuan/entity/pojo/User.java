@@ -22,7 +22,7 @@ public class User implements Serializable {
     @TableId
     private Long id;
     // 账号
-    private Integer account;
+    private String account;
     // 密码
     private String password;
     // 创建时间

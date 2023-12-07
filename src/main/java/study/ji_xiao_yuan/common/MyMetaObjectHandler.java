@@ -22,14 +22,20 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("createUser", BaseContext.getCurrentId());
-        metaObject.setValue("updateUser", BaseContext.getCurrentId());
+        if (metaObject.hasGetter("createUser")) {
+            metaObject.setValue("createUser", BaseContext.getCurrentId());
+        }
+        if (metaObject.hasGetter("updateUser")) {
+            metaObject.setValue("updateUser", BaseContext.getCurrentId());
+        }
     }
 
     // 更新时自动填充
     @Override
     public void updateFill(MetaObject metaObject) {
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("updateUser", BaseContext.getCurrentId());
+        if (metaObject.hasGetter("updateUser")) {
+            metaObject.setValue("updateUser", BaseContext.getCurrentId());
+        }
     }
 }
