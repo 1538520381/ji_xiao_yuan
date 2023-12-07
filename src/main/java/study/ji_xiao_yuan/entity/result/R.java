@@ -24,17 +24,17 @@ public class R<T> implements Serializable {
     private T data;
     private Map<String, Object> map = new HashMap<>();
 
-    public static <T> R<T> success() {
+    public static <T> R<T> success(String msg) {
         R<T> r = new R<T>();
         r.code = 0;
-        r.msg = "success";
+        r.msg = msg;
         return r;
     }
 
-    public static <T> R<T> success(T object) {
+    public static <T> R<T> success(String msg, T object) {
         R<T> r = new R<T>();
         r.code = 0;
-        r.msg = "success";
+        r.msg = msg;
         r.data = object;
         return r;
     }
