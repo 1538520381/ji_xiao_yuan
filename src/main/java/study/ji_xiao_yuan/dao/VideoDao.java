@@ -1,7 +1,7 @@
 package study.ji_xiao_yuan.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 import study.ji_xiao_yuan.entity.pojo.Video;
 
 /**

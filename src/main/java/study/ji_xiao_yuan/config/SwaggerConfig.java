@@ -46,7 +46,7 @@ public class SwaggerConfig {
 
         // 配置包扫描路径
         docket.select()
-                .apis(RequestHandlerSelectors.basePackage("study.ji_xiao_yuan.cotroller"));
+                .apis(RequestHandlerSelectors.basePackage("study.ji_xiao_yuan.controller"));
 
         return docket.enable(flag);
     }
