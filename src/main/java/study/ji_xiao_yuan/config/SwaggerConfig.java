@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @author Persolute
  * @version 1.0
- * @description Swagger配置文件
+ * @description Swagger配置类
  * @email 1538520381@qq.com
  * @date 2023/12/6 22:06
  */
