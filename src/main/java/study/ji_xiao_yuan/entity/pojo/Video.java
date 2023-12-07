@@ -28,6 +28,7 @@ public class Video implements Serializable {
     // 阶段编号
     private Long stageId;
     // 顺序
+    @TableField("`order`")
     private Integer order;
     // 创建时间
     @TableField(fill = FieldFill.INSERT_UPDATE)

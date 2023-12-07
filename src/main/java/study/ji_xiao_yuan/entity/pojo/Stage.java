@@ -26,6 +26,7 @@ public class Stage implements Serializable {
     // 简介
     private String introduction;
     // 顺序
+    @TableField("`order`")
     private Integer order;
     // 创建时间
     @TableField(fill = FieldFill.INSERT)

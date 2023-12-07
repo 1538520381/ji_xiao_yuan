@@ -34,13 +34,15 @@ public class UserController {
      * @date 2023/12/7 15:09
      */
     @PostMapping("/register")
-    public R<String> register(@RequestBody User user) {
+    public R<String> register(HttpServletRequest request, @RequestBody User user) {
         if (user.getAccount() == null) {
             return R.error("请输入账号");
         } else if (user.getPassword() == null) {
             return R.error("请输入密码");
         } else {
-            return userService.register(user);
+            R<String> r = userService.register(user);
+            login(request, user);
+            return r;
         }
     }
 
@@ -64,7 +66,7 @@ public class UserController {
             } else if (!user0.getPassword().equals(user.getPassword())) {
                 return R.error("密码输入错误");
             } else {
-                request.getSession().setAttribute("user", user.getId());
+                request.getSession().setAttribute("admin", user0.getId());
                 return R.success("登录成功");
             }
         }
