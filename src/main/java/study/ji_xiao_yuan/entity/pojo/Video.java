@@ -31,15 +31,15 @@ public class Video implements Serializable {
     @TableField("`order`")
     private Integer order;
     // 创建时间
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     // 修改时间
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
     // 创建用户
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField(fill = FieldFill.INSERT)
     private Long createUser;
     // 修改用户
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateUser;
 }
