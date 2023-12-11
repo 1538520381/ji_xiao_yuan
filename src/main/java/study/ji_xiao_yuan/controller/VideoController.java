@@ -1,7 +1,6 @@
 package study.ji_xiao_yuan.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.mockito.internal.matchers.Find;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -73,5 +72,41 @@ public class VideoController {
         } else {
             return R.error("修改视频失败");
         }
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 修改视频顺序
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 15:11
+     */
+    @PutMapping("/{videoId}/{flag}")
+    public R<String> updateVideoOrder(@PathVariable Long videoId, @PathVariable Integer flag) {
+        Video video = videoService.getById(videoId);
+        if (video == null) {
+            return R.error("修改失败，视频不存在");
+        }
+
+        long stageId = video.getStageId();
+        int order = video.getOrder();
+        Video video0;
+        if (flag == 1) {
+            video0 = videoService.getVideoByOrderInStage(stageId, order + 1);
+            if (video0 == null) {
+                return R.error("修改失败，视频已排在最后");
+            }
+            video0.setOrder(order);
+            video.setOrder(order + 1);
+        } else {
+            video0 = videoService.getVideoByOrderInStage(stageId, order - 1);
+            if (video0 == null) {
+                return R.error("修改失败，视频已排在开头");
+            }
+            video0.setOrder(order);
+            video.setOrder(order - 1);
+        }
+        update(video0);
+        return update(video);
     }
 }

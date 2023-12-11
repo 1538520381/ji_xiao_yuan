@@ -46,4 +46,18 @@ public class VideoServiceImpl extends ServiceImpl<VideoDao, Video> implements Vi
         lambdaQueryWrapper.eq(Video::getStageId, stageId);
         return this.count(lambdaQueryWrapper);
     }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 获取指定阶段中指定顺序的视频
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 15:04
+     */
+    @Override
+    public Video getVideoByOrderInStage(Long stageId, Integer order) {
+        LambdaQueryWrapper<Video> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Video::getStageId, stageId).eq(Video::getOrder, order);
+        return this.getOne(lambdaQueryWrapper);
+    }
 }

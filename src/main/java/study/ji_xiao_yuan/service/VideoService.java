@@ -14,5 +14,8 @@ import java.util.List;
  */
 public interface VideoService extends IService<Video> {
     List<Video> getByStageId(Long stageId);
+
     int countInStage(Long stageId);
+
+    Video getVideoByOrderInStage(Long stageId, Integer order);
 }
