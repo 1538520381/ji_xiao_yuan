@@ -26,4 +26,4 @@ mybatis-plus:
       id-type: ASSIGN_ID # 使用雪花算法自动生成主键ID
 
 ji_xiao_yuan:
-  video_path: E:\code_exercise\Java\ji_xiao_yuan\src\main\resources\video # 视频存储路径
+  video_path: E:\code_exercise\Java\ji_xiao_yuan\src\main\resources\video\ # 视频存储路径
