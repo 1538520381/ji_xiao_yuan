@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import study.ji_xiao_yuan.entity.dto.LoginDTO;
 import study.ji_xiao_yuan.entity.pojo.User;
 import study.ji_xiao_yuan.entity.result.R;
 import study.ji_xiao_yuan.service.UserService;
@@ -49,11 +50,11 @@ public class UserController {
     /*
      * @author Persolute
      * @version 1.0
-     * @description 登录
+     * @description 管理员登录
      * @email 1538520381@qq.com
      * @date 2023/12/7 15:09
      */
-    @PostMapping("/login")
+    @PostMapping("/adminLogin")
     public R<String> login(HttpServletRequest request, @RequestBody User user) {
         if (user.getAccount() == null) {
             return R.error("请输入账号");
@@ -70,6 +71,19 @@ public class UserController {
                 return R.success("登录成功");
             }
         }
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 用户登录
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 15:58
+     */
+    @PostMapping("/userLogin")
+    public R<String> login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
+        request.getSession().setAttribute("user", loginDTO.getOpenId());
+        return R.success("登录成功");
     }
 
     /*

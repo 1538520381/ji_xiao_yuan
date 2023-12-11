@@ -32,7 +32,8 @@ public class LoginFilter implements Filter {
         String requestURI = request.getRequestURI();
         String[] urls = new String[]{
                 "/user/register",
-                "/user/login"
+                "/user/adminLogin",
+                "/user/userLogin"
         };
 
         // 此请求无须拦截
