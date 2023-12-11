@@ -71,4 +71,17 @@ public class UserController {
             }
         }
     }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 退出登录
+     * @email 1538520381@qq.com
+     * @date 2023/12/9 17:48
+     */
+    @PostMapping("/logout")
+    public R<String> logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("admin");
+        return R.success("退出登录成功");
+    }
 }
