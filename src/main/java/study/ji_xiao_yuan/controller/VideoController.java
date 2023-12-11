@@ -36,7 +36,7 @@ public class VideoController {
      */
     @PostMapping
     public R<String> save(@RequestBody Video video) {
-        video.setOrder(videoService.count());
+        video.setOrder(videoService.countInStage(video.getStageId()));
         videoService.save(video);
         return R.success("新增视频成功");
     }

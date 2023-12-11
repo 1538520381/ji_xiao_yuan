@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import study.ji_xiao_yuan.dao.VideoDao;
+import study.ji_xiao_yuan.entity.pojo.Stage;
 import study.ji_xiao_yuan.entity.pojo.Video;
 import study.ji_xiao_yuan.service.VideoService;
 
@@ -30,5 +31,19 @@ public class VideoServiceImpl extends ServiceImpl<VideoDao, Video> implements Vi
         LambdaQueryWrapper<Video> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Video::getStageId, stageId);
         return this.list(lambdaQueryWrapper);
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 获取指定阶段中视频数
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 14:54
+     */
+    @Override
+    public int countInStage(Long stageId) {
+        LambdaQueryWrapper<Video> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Video::getStageId, stageId);
+        return this.count(lambdaQueryWrapper);
     }
 }
