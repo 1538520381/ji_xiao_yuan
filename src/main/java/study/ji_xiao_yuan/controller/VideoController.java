@@ -58,4 +58,20 @@ public class VideoController {
         new File(basePath + video.getPath()).delete();
         return R.success("删除视频成功");
     }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 修改视频
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 14:35
+     */
+    @PutMapping
+    public R<String> update(@RequestBody Video video) {
+        if (videoService.updateById(video)) {
+            return R.success("修改视频成功");
+        } else {
+            return R.error("修改视频失败");
+        }
+    }
 }
