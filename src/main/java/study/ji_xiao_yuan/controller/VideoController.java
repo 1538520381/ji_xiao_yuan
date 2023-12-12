@@ -152,7 +152,6 @@ public class VideoController {
         return update(video);
     }
 
-
     /*
      * @author Persolute
      * @version 1.0
@@ -160,7 +159,7 @@ public class VideoController {
      * @email 1538520381@qq.com
      * @date 2023/12/12 14:42
      */
-    @GetMapping("/{videoId}")
+    @GetMapping("/play/{videoId}")
     public R<String> play(HttpServletRequest request, HttpServletResponse response, @PathVariable Long videoId) throws IOException, ServletException {
         Video video = videoService.getById(videoId);
         if (video == null) {
