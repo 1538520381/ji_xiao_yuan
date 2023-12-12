@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import study.ji_xiao_yuan.common.NonStaticResourceHttpRequestHandler;
 import study.ji_xiao_yuan.entity.pojo.Video;
 import study.ji_xiao_yuan.entity.result.R;
+import study.ji_xiao_yuan.service.StageService;
 import study.ji_xiao_yuan.service.VideoService;
 
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -39,6 +41,8 @@ public class VideoController {
     private String basePath;
     @Autowired
     private VideoService videoService;
+    @Autowired
+    private StageService stageService;
 
     private final NonStaticResourceHttpRequestHandler nonStaticResourceHttpRequestHandler;
 
@@ -150,6 +154,21 @@ public class VideoController {
         }
         update(video0);
         return update(video);
+    }
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 获取指定阶段的视频列表
+     * @email 1538520381@qq.com
+     * @date 2023/12/12 15:25
+     */
+    @GetMapping("/{stageId}")
+    public R<List<Video>> getVideoListByStageId(@PathVariable Long stageId) {
+        if (stageService.getById(stageId) == null) {
+            return R.error("阶段不存在");
+        }
+        return R.success("获取视频列表成功", videoService.getVideoListByStageId(stageId));
     }
 
     /*

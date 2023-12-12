@@ -18,4 +18,6 @@ public interface VideoService extends IService<Video> {
     int countInStage(Long stageId);
 
     Video getVideoByOrderInStage(Long stageId, Integer order);
+
+    List<Video> getVideoListByStageId(Long stageId);
 }
