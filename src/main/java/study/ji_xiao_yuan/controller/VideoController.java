@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import study.ji_xiao_yuan.common.NonStaticResourceHttpRequestHandler;
 import study.ji_xiao_yuan.entity.pojo.Video;
 import study.ji_xiao_yuan.entity.result.R;
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 /**
  * @author Persolute
@@ -39,6 +41,32 @@ public class VideoController {
     private VideoService videoService;
 
     private final NonStaticResourceHttpRequestHandler nonStaticResourceHttpRequestHandler;
+
+    /*
+     * @author Persolute
+     * @version 1.0
+     * @description 视频上传
+     * @email 1538520381@qq.com
+     * @date 2023/12/11 12:02
+     */
+    @PostMapping("/upload")
+    public R<String> upload(MultipartFile file) {
+        String originalFilename = file.getOriginalFilename();
+        String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
+        String fileName = UUID.randomUUID() + suffix;
+        File dir = new File(basePath);
+
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+
+        try {
+            file.transferTo(new File(basePath + fileName));
+        } catch (IOException e) {
+            return R.error("上传失败");
+        }
+        return R.success(fileName);
+    }
 
     /*
      * @author Persolute
